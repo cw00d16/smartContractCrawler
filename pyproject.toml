@@ -1,0 +1,26 @@
+[project]
+name = "smart-contract-crawler"
+version = "0.1.0"
+description = "Crawls a smart contract and its proxy/child contracts across chains, producing a dependency graph and source bundle."
+requires-python = ">=3.10"
+dependencies = [
+    "web3>=6.15,<7",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+sc-crawl = "crawler.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
